@@ -289,22 +289,108 @@ function render() {
     gPop() ;
     
     gPush() ;
-    { //seaweed
-        gScale(0.12,0.2,0.2);
-        setColor(vec4(0.0,1.0,0.0,1.0));
-        gTranslate(30,-13,0);
-        drawSphere();
+    { //seaweed strand 1
+        gPush();
+        { //ellipse 1
+            gScale(0.12,0.2,0.2);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            gTranslate(30,-13,0);
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        { //ellipse 2
+            gScale(0.12,0.2,0.2);
+            gTranslate(30,-11,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
+        
+        gPush();
+        { //ellipse 3
+            gRotate(350,0,0,1);
+            gScale(0.12,0.2,0.2);
+            gTranslate(32.5,-5.8,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        { //ellipse 4
+            gRotate(340,0,0,1);
+            gScale(0.12,0.2,0.2);
+            gTranslate(33,-0.5,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        { //ellipse 5
+            gRotate(335,0,0,1);
+            gScale(0.12,0.2,0.2);
+            gTranslate(32.5,3.2,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        { //ellipse 6
+            gRotate(340,0,0,1);
+            gScale(0.12,0.2,0.2);
+            gTranslate(32.5,3.5,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        { //ellipse 7
+            gRotate(345,0,0,1);
+            gScale(0.12,0.2,0.2);
+            gTranslate(32.5,3.5,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        { //ellipse 8
+            gRotate(10,0,0,1);
+            gScale(0.12,0.2,0.2);
+            gTranslate(32.5,-3,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        { //ellipse 9
+            gRotate(15,0,0,1);
+            gScale(0.12,0.2,0.2);
+            gTranslate(32.5,-3,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        { //ellipse 10
+            gRotate(20,0,0,1);
+            gScale(0.12,0.2,0.2);
+            gTranslate(32.5,-3,0);
+            setColor(vec4(0.0,1.0,0.0,1.0));
+            drawSphere();
+        }
+        gPop();
     }
     gPop() ;
 
-    gPush();
-    {
-        gScale(0.12,0.2,0.2);
-        setColor(vec4(0.0,1.0,0.0,1.0));
-        gTranslate(30,-11,0);
-        drawSphere();
-    }
-    gPop();
+
     
     if( animFlag )
         window.requestAnimFrame(render);
