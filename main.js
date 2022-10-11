@@ -1,5 +1,5 @@
 //York University 3431 3D-Graphics Assignment 1 
-//Group Member: KyongRok Kim 215813413 , 
+//Group Member: KyongRok Kim 215813413, Arian Quader 218070607
 var canvas;
 var gl;
 
