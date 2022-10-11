@@ -262,36 +262,36 @@ function render() {
     gTranslate(-4,0,0) ;
     gPush() ;
     {
-		gRotate(TIME*180/3.14159,0,1,0) ;
-        setColor(vec4(1.0,0.0,0.0,1.0)) ;
-        drawSphere() ;
+		gTranslate(4,-5,0);
+        gScale(6,1.5,0);
+        setColor(vec4(0.0,0.0,0.0,1.0)) ;
+        drawCube();
+        
     }
     gPop() ;
     
     gPush() ;
     {
-        gTranslate(3,0,0) ;
-        setColor(vec4(0.0,1.0,0.0,1.0)) ;
-        gRotate(TIME*180/3.14159,0,1,0) ;
-        drawCube() ;
+        gTranslate(4,-3,0);
+        gScale(0.5,0.5,0.5);
+        setColor(vec4(0.5,0.5,0.5,1.0));
+        drawSphere();
     }
     gPop() ;
     
     gPush() ;
     {
-        gTranslate(5,0,0) ;
-        setColor(vec4(0.0,0.0,1.0,1.0)) ;
-        gRotate(TIME*180/3.14159,0,1,0) ;
-        drawCylinder() ;
+        gTranslate(3.1,-3.2,0);
+        gScale(0.3,0.3,0.3);
+        setColor(vec4(0.5,0.5,0.5,1.0));
+        drawSphere();
     }
     gPop() ;
     
     gPush() ;
     {
-        gTranslate(7,0,0) ;
-        setColor(vec4(1.0,1.0,0.0,1.0)) ;
-        gRotate(TIME*180/3.14159,0,1,0) ;
-        drawCone() ;
+        setColor(vec4(0.0,1.0,0.0,1.0));
+        drawSphere();
     }
     gPop() ;
     
