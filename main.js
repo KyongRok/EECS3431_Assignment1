@@ -261,27 +261,27 @@ function render() {
    
     gTranslate(-4,0,0) ;
     gPush() ;
-    {
-		gTranslate(4,-5,0);
-        gScale(6,1.5,0);
-        setColor(vec4(0.0,0.0,0.0,1.0)) ;
-        drawCube();
+    { //floor
+		gTranslate(4,-5,0); //move to bottom of the canvas
+        gScale(6,1.5,0); //scale respect to x -> stretch side ways, y -> stretch upwards
+        setColor(vec4(0.0,0.0,0.0,1.0)) ; //set color as black
+        drawCube(); //draw cube
         
     }
     gPop() ;
     
     gPush() ;
-    {
-        gTranslate(4,-3,0);
-        gScale(0.5,0.5,0.5);
-        setColor(vec4(0.5,0.5,0.5,1.0));
+    { //big rock
+        gTranslate(4,-3,0); //move to top of the floor
+        gScale(0.5,0.5,0.5); //scale less than 1 so it shrinks from all sides
+        setColor(vec4(0.5,0.5,0.5,1.0)); //set color to grey
         drawSphere();
     }
     gPop() ;
     
     gPush() ;
-    {
-        gTranslate(3.1,-3.2,0);
+    { //small rock
+        gTranslate(3.1,-3.2,0); //smaller rock
         gScale(0.3,0.3,0.3);
         setColor(vec4(0.5,0.5,0.5,1.0));
         drawSphere();
@@ -289,8 +289,10 @@ function render() {
     gPop() ;
     
     gPush() ;
-    {
+    { //seaweed
+        gScale(0.12,0.2,0.2);
         setColor(vec4(0.0,1.0,0.0,1.0));
+        gTranslate(30,-13,0);
         drawSphere();
     }
     gPop() ;
