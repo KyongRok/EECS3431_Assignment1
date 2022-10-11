@@ -1,3 +1,5 @@
+//York University 3431 3D-Graphics Assignment 1 
+//Group Member: KyongRok Kim 215813413 , 
 function setAttribPointers(obj) {
     gl.bindBuffer( gl.ARRAY_BUFFER, obj.nBuffer );
     gl.vertexAttribPointer( obj.vNormal, 3, gl.FLOAT, false, 0, 0 );
