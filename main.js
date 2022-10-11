@@ -296,6 +296,15 @@ function render() {
         drawSphere();
     }
     gPop() ;
+
+    gPush();
+    {
+        gScale(0.12,0.2,0.2);
+        setColor(vec4(0.0,1.0,0.0,1.0));
+        gTranslate(30,-11,0);
+        drawSphere();
+    }
+    gPop();
     
     if( animFlag )
         window.requestAnimFrame(render);
