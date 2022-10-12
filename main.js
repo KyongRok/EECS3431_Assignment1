@@ -435,6 +435,32 @@ function render() {
             drawCube();
         }
         gPop();
+        gPush();
+        {//right hip
+            gTranslate(1,-8,-1);
+            gRotate(60,1,0,0);
+            gScale(0.4,2,0.4);
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//left leg
+            gTranslate(-1,-10.75,-4.25);
+            gRotate(65,1,0,0);
+            gScale(0.4,2,0.4);
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//right leg
+            gTranslate(1,-9.5,-4.75);
+            gRotate(75,1,0,0);
+            gScale(0.4,2,0.4);
+            drawCube();
+        }
+        gPop();
     }
     gPop();
     
