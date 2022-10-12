@@ -407,6 +407,37 @@ function render() {
         }gPop();
     }gPop();
 
+    gPush();
+    {//human aka Character
+        gRotate(340,0,1,0); //rotate whole body
+        gScale(0.3,0.3,0.3); //scale
+        
+        gTranslate(0,3,0); //not yet done
+        gPush();
+        {//head
+            setColor(vec4(0.48,0.25,0.52,1));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        {//body
+            gScale(2,3,1);
+            gTranslate(0,-1.35,0);
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//left hip
+            gTranslate(-1,-8.5,-1);
+            gRotate(45,1,0,0);
+            gScale(0.4,2,0.4);
+            drawCube();
+        }
+    }
+    gPop();
+
     
     if( animFlag )
         window.requestAnimFrame(render);
