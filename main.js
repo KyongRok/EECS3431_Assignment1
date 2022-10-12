@@ -410,9 +410,8 @@ function render() {
     gPush();
     {//human aka Character
         gRotate(340,0,1,0); //rotate whole body
-        gScale(0.3,0.3,0.3); //scale
-        
-        gTranslate(0,3,0); //not yet done
+        gScale(0.5,0.5,0.5); //scale
+        gTranslate(0,8,0); //not yet done
         gPush();
         {//head
             setColor(vec4(0.48,0.25,0.52,1));
@@ -438,7 +437,6 @@ function render() {
         gPop();
     }
     gPop();
-
     
     if( animFlag )
         window.requestAnimFrame(render);
