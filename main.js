@@ -310,7 +310,7 @@ function render() {
     { //seaweed strand 1
         gTranslate(3.5,-2.5,0);
         draw_ellipse();
-        addStrands(TIME);
+        addStrands();
     }
     gPop();
 
@@ -318,7 +318,7 @@ function render() {
     { // seaweed strand 2
         gTranslate(4,-2.2,0);
         draw_ellipse();
-        addStrands(TIME);
+        addStrands();
     }
     gPop();
 
@@ -377,9 +377,11 @@ function render() {
             setColor(white);
             drawSphere();
         }gPop();
-        gRotate(15*Math.cos(TIME), 0, 1, 0);
-        gPush();{
-            gPush();{
+        gTranslate(4.25, 0, 0);
+        gRotate(50*Math.cos(10*TIME), 0, 1, 0);
+        gTranslate(-4.25, 0, 0);
+        gPush();{ //tail
+            gPush();{ //upper tail
                 gTranslate(5.1, 0.75, 0);
                 gRotate(45, 0, 0, 1);
                 gScale(2, 0.25, 0.25);
@@ -387,7 +389,7 @@ function render() {
                 setColor(red);
                 drawCone();
             }gPop();
-            gPush();{
+            gPush();{ //lower tail
                 gTranslate(4.8, -0.4, 0);
                 gRotate(45, 0, 0, -1);
                 gScale(1, 0.25, 0.25);
@@ -405,21 +407,13 @@ function render() {
 }
 
 function addStrands(){
-    drawBead(1);
-    drawBead(2);
-    drawBead(3);
-    drawBead(4);
-    drawBead(5);
-    drawBead(6);
-    drawBead(7);
-    drawBead(8);
-    drawBead(9);
-}
-function drawBead(start){
-    gTranslate(0,0.3,0);
-    gRotate(15*Math.cos(TIME+start), 0, 0, 1);
-    gTranslate(0,0.3,0);
-    draw_ellipse();
+    for(let i = 1; i <= 9; i++){
+        gTranslate(0,0.3,0);
+        gRotate(15*Math.cos(TIME+i), 0, 0, 1);
+        gTranslate(0,0.3,0);
+        draw_ellipse();
+    }
+
 }
 
 // A simple camera controller which uses an HTML element as the event
