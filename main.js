@@ -308,7 +308,6 @@ function render() {
     
     gPush();
     { //seaweed strand 1
-        //let seaweed_movement = 40*Math.cos(TIME+180);
         gTranslate(3.5,-2.5,0);
         draw_ellipse();
         addStrands(TIME);
@@ -334,54 +333,72 @@ function render() {
     
     gPush();
     { //fish
-        gTranslate(3, -2.5, 2.5);
+        //vertical movement
+        gTranslate(3, 1*Math.cos(TIME) - 1.5, 2.5);
+        //rotation about seaweed and rock
+        gTranslate(1, 0, -2.5)
+        gRotate(TIME*25, 0, -1, 0);
+        gTranslate(-1, 0, 2.5)
+        //scale down
         gScale(0.5, 0.5, 0.5);
-        gPush();
-        { //body
+        gRotate(40*Math.cos(TIME+1), 0, 1, 0);
+        gPush();{ //body
             gTranslate(2.5, 0, 0);
             gScale(4, 1, 1);
             gRotate(90, 0, 1, 0);
             setColor(red);
             drawCone();
-        }
-        gPop();
-        gPush();
-        { //face
+        }gPop();
+        gPush();{ //face
             gRotate(-90, 0, 1, 0);
             setColor(grey);
             drawCone();
-        }
-        gPop();
-        gPush();
-        { //eyes
-            gPush();{ //left pupil
-                gTranslate(-0.3, 0.5, 0.5);
-                gScale(0.1, 0.1, 0.1);
-                setColor(black);
-                drawSphere();
+        }gPop();
+        gPush();{ //left pupil
+            gTranslate(-0.3, 0.5, 0.5);
+            gScale(0.1, 0.1, 0.1);
+            setColor(black);
+            drawSphere();
+        }gPop();
+        gPush();{ //right pupil
+            gTranslate(-0.3, 0.5, -0.5);
+            gScale(0.1, 0.1, 0.1);
+            setColor(black);
+            drawSphere();
+        }gPop();
+        gPush();{ //left eyeball
+            gTranslate(-0.1, 0.5, -0.5);
+            gScale(0.25, 0.25, 0.25);
+            setColor(white);
+            drawSphere();
+        }gPop();
+        gPush();{ //right eyeball
+            gTranslate(-0.1, 0.5, 0.5);
+            gScale(0.25, 0.25, 0.25);
+            setColor(white);
+            drawSphere();
+        }gPop();
+        //gRotate(15*Math.cos(TIME), 0, 1, 0);
+        gPush();{
+            gPush();{
+                gTranslate(5.1, 0.75, 0);
+                gRotate(45, 0, 0, 1);
+                gScale(2, 0.25, 0.25);
+                gRotate(90, 0, 1, 0);
+                setColor(red);
+                drawCone();
             }gPop();
-            gPush();{ //right pupil
-                gTranslate(-0.3, 0.5, -0.5);
-                gScale(0.1, 0.1, 0.1);
-                setColor(black);
-                drawSphere();
+            gPush();{
+                gTranslate(4.8, -0.4, 0);
+                gRotate(45, 0, 0, -1);
+                gScale(1, 0.25, 0.25);
+                gRotate(90, 0, 1, 0);
+                setColor(red);
+                drawCone();
             }gPop();
-            gPush();{ //left eyeball
-                gTranslate(-0.1, 0.5, -0.5);
-                gScale(0.25, 0.25, 0.25);
-                setColor(white);
-                drawSphere();
-            }gPop();
-            gPush();{ //right eyeball
-                gTranslate(-0.1, 0.5, 0.5);
-                gScale(0.25, 0.25, 0.25);
-                setColor(white);
-                drawSphere();
-            }gPop();
-        }
-        gPop();
-    }
-    gPop();
+            
+        }gPop();
+    }gPop();
 
     
     if( animFlag )
@@ -401,7 +418,7 @@ function addStrands(){
 }
 function drawBead(start){
     gTranslate(0,0.3,0);
-    gRotate(10*Math.cos(TIME+start), 0, 0, 1);
+    gRotate(15*Math.cos(TIME+start), 0, 0, 1);
     gTranslate(0,0.3,0);
     draw_ellipse();
 }
