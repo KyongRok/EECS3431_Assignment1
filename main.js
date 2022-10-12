@@ -259,11 +259,18 @@ function render() {
         prevTime = curTime ;
     }
    
+    // some colours
+    var red = vec4(1.0, 0.0, 0.0, 1.0);
+    var grey = vec4(0.5,0.5,0.5,1.0);
+    var white = vec4(1,1,1,1.0);
+    var black = vec4(0,0,0,1.0);
+
+
     gTranslate(-4,0,0) ;
     gPush() ;
-    { //floor
+    { //floor (FOR KYONG, CHANGED TO LOOK GOOD FOR YROLL, OG: gScale(6,1.5,0);)
 		gTranslate(4,-5,0); //move to bottom of the canvas
-        gScale(6,1.5,0); //scale respect to x -> stretch side ways, y -> stretch upwards
+        gScale(6,1.5,6); //scale respect to x -> stretch side ways, y -> stretch upwards
         setColor(vec4(0.0,0.0,0.0,1.0)) ; //set color as black
         drawCube(); //draw cube
         
@@ -390,6 +397,65 @@ function render() {
     }
     gPop() ;
 
+    gPush() ;
+    { //small rock
+        gTranslate(3.1,-3.2,0); //smaller rock
+        gScale(0.3,0.3,0.3);
+        setColor(vec4(0.5,0.5,0.5,1.0));
+        drawSphere();
+    }
+    gPop() ;
+    
+    gPush();
+    { //fish
+        gTranslate(3, -2.5, 2.5);
+        gScale(0.5, 0.5, 0.5);
+        gPush();
+        { //body
+            gTranslate(2.5, 0, 0);
+            gScale(4, 1, 1);
+            gRotate(90, 0, 1, 0);
+            setColor(red);
+            drawCone();
+        }
+        gPop();
+        gPush();
+        { //face
+            gRotate(-90, 0, 1, 0);
+            setColor(grey);
+            drawCone();
+        }
+        gPop();
+        gPush();
+        { //eyes
+            gPush();{ //left pupil
+                gTranslate(-0.3, 0.5, 0.5);
+                gScale(0.1, 0.1, 0.1);
+                setColor(black);
+                drawSphere();
+            }gPop();
+            gPush();{ //right pupil
+                gTranslate(-0.3, 0.5, -0.5);
+                gScale(0.1, 0.1, 0.1);
+                setColor(black);
+                drawSphere();
+            }gPop();
+            gPush();{ //left eyeball
+                gTranslate(-0.1, 0.5, -0.5);
+                gScale(0.25, 0.25, 0.25);
+                setColor(white);
+                drawSphere();
+            }gPop();
+            gPush();{ //right eyeball
+                gTranslate(-0.1, 0.5, 0.5);
+                gScale(0.25, 0.25, 0.25);
+                setColor(white);
+                drawSphere();
+            }gPop();
+        }
+        gPop();
+    }
+    gPop();
 
     
     if( animFlag )
