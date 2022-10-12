@@ -221,6 +221,17 @@ function gPut(m) {
 	MS.push(m) ;
 }
 
+//draws ellipse shapes
+function draw_ellipse(){
+    gPush();
+    {
+        setColor(vec4(0.0,1.0,0.0,1.0));
+        gScale(0.15,0.3,0.15);
+        drawSphere();
+    }
+    gPop();
+}
+
 function render() {
     
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -259,11 +270,18 @@ function render() {
         prevTime = curTime ;
     }
    
+    // some colours
+    var red = vec4(1.0, 0.0, 0.0, 1.0);
+    var grey = vec4(0.5,0.5,0.5,1.0);
+    var white = vec4(1,1,1,1.0);
+    var black = vec4(0,0,0,1.0);
+
+
     gTranslate(-4,0,0) ;
     gPush() ;
     { //floor
 		gTranslate(4,-5,0); //move to bottom of the canvas
-        gScale(6,1.5,0); //scale respect to x -> stretch side ways, y -> stretch upwards
+        gScale(6,1.5,6); //scale respect to x -> stretch side ways, y -> stretch upwards
         setColor(vec4(0.0,0.0,0.0,1.0)) ; //set color as black
         drawCube(); //draw cube
         
@@ -290,106 +308,138 @@ function render() {
     
     gPush() ;
     { //seaweed strand 1
+        let seaweed_movement = 50*Math.cos(TIME+90);
         gPush();
         { //ellipse 1
-            gScale(0.12,0.2,0.2);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            gTranslate(30,-13,0);
-            drawSphere();
+            gTranslate(3.5,-2.5,0);
+            draw_ellipse();
         }
         gPop();
 
         gPush();
         { //ellipse 2
-            gScale(0.12,0.2,0.2);
-            gTranslate(30,-11,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,-1.9,0);
+            draw_ellipse();
         }
         gPop();
         
         gPush();
         { //ellipse 3
-            gRotate(350,0,0,1);
-            gScale(0.12,0.2,0.2);
-            gTranslate(32.5,-5.8,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,-1.3,0);
+            draw_ellipse();
         }
         gPop();
 
         gPush();
         { //ellipse 4
-            gRotate(340,0,0,1);
-            gScale(0.12,0.2,0.2);
-            gTranslate(33,-0.5,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,-0.7,0);
+            draw_ellipse();
         }
         gPop();
 
         gPush();
         { //ellipse 5
-            gRotate(335,0,0,1);
-            gScale(0.12,0.2,0.2);
-            gTranslate(32.5,3.2,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,-0.1,0);
+            draw_ellipse();
         }
         gPop();
 
         gPush();
         { //ellipse 6
-            gRotate(340,0,0,1);
-            gScale(0.12,0.2,0.2);
-            gTranslate(32.5,3.5,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,0.5,0);
+            draw_ellipse();
         }
         gPop();
 
         gPush();
         { //ellipse 7
-            gRotate(345,0,0,1);
-            gScale(0.12,0.2,0.2);
-            gTranslate(32.5,3.5,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,1.1,0);
+            draw_ellipse();
         }
         gPop();
 
         gPush();
         { //ellipse 8
-            gRotate(10,0,0,1);
-            gScale(0.12,0.2,0.2);
-            gTranslate(32.5,-3,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,1.7,0);
+            draw_ellipse();
         }
         gPop();
 
         gPush();
         { //ellipse 9
-            gRotate(15,0,0,1);
-            gScale(0.12,0.2,0.2);
-            gTranslate(32.5,-3,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,2.3,0);
+            draw_ellipse();
         }
         gPop();
 
         gPush();
         { //ellipse 10
-            gRotate(20,0,0,1);
-            gScale(0.12,0.2,0.2);
-            gTranslate(32.5,-3,0);
-            setColor(vec4(0.0,1.0,0.0,1.0));
-            drawSphere();
+            gTranslate(3.5,2.9,0);
+            draw_ellipse();
         }
         gPop();
     }
     gPop() ;
 
+    gPush() ;
+    { //small rock
+        gTranslate(3.1,-3.2,0); //smaller rock
+        gScale(0.3,0.3,0.3);
+        setColor(vec4(0.5,0.5,0.5,1.0));
+        drawSphere();
+    }
+    gPop() ;
+    
+    gPush();
+    { //fish
+        gTranslate(3, -2.5, 2.5);
+        gScale(0.5, 0.5, 0.5);
+        gPush();
+        { //body
+            gTranslate(2.5, 0, 0);
+            gScale(4, 1, 1);
+            gRotate(90, 0, 1, 0);
+            setColor(red);
+            drawCone();
+        }
+        gPop();
+        gPush();
+        { //face
+            gRotate(-90, 0, 1, 0);
+            setColor(grey);
+            drawCone();
+        }
+        gPop();
+        gPush();
+        { //eyes
+            gPush();{ //left pupil
+                gTranslate(-0.3, 0.5, 0.5);
+                gScale(0.1, 0.1, 0.1);
+                setColor(black);
+                drawSphere();
+            }gPop();
+            gPush();{ //right pupil
+                gTranslate(-0.3, 0.5, -0.5);
+                gScale(0.1, 0.1, 0.1);
+                setColor(black);
+                drawSphere();
+            }gPop();
+            gPush();{ //left eyeball
+                gTranslate(-0.1, 0.5, -0.5);
+                gScale(0.25, 0.25, 0.25);
+                setColor(white);
+                drawSphere();
+            }gPop();
+            gPush();{ //right eyeball
+                gTranslate(-0.1, 0.5, 0.5);
+                gScale(0.25, 0.25, 0.25);
+                setColor(white);
+                drawSphere();
+            }gPop();
+        }
+        gPop();
+    }
+    gPop();
 
     
     if( animFlag )

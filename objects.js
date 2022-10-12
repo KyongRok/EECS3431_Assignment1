@@ -1,5 +1,5 @@
 //York University 3431 3D-Graphics Assignment 1 
-//Group Member: KyongRok Kim 215813413 , Arian Quader 218070607
+//Group Member: KyongRok Kim 215813413, Arian Quader 218070607
 function setAttribPointers(obj) {
     gl.bindBuffer( gl.ARRAY_BUFFER, obj.nBuffer );
     gl.vertexAttribPointer( obj.vNormal, 3, gl.FLOAT, false, 0, 0 );
@@ -508,5 +508,4 @@ Sphere.draw = function() {
     gl.drawArrays(gl.TRIANGLES, 0,this.n*this.n*6 );
     
 }
-
 
