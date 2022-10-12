@@ -308,7 +308,7 @@ function render() {
     
     gPush() ;
     { //seaweed strand 1
-        let seaweed_movement = 50*Math.cos(TIME+90);
+        let seaweed_movement = 40*Math.cos(TIME+180);
         gPush();
         { //ellipse 1
             gTranslate(3.5,-2.5,0);
@@ -319,6 +319,7 @@ function render() {
         gPush();
         { //ellipse 2
             gTranslate(3.5,-1.9,0);
+            gRotate(seaweed_movement,0,0,3.5);
             draw_ellipse();
         }
         gPop();
