@@ -341,7 +341,6 @@ function render() {
         gTranslate(-1, 0, 2.5)
         //scale down
         gScale(0.5, 0.5, 0.5);
-        gRotate(40*Math.cos(TIME+1), 0, 1, 0);
         gPush();{ //body
             gTranslate(2.5, 0, 0);
             gScale(4, 1, 1);
@@ -378,7 +377,7 @@ function render() {
             setColor(white);
             drawSphere();
         }gPop();
-        //gRotate(15*Math.cos(TIME), 0, 1, 0);
+        gRotate(15*Math.cos(TIME), 0, 1, 0);
         gPush();{
             gPush();{
                 gTranslate(5.1, 0.75, 0);
