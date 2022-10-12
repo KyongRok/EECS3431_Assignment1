@@ -404,9 +404,8 @@ function render() {
     gPush();
     {//human aka Character
         gRotate(340,0,1,0); //rotate whole body
-        gScale(0.3,0.3,0.3); //scale
-        
-        gTranslate(0,3,0); //not yet done
+        gScale(0.5,0.5,0.5); //scale
+        gTranslate(0,8,0); //not yet done
         gPush();
         {//head
             setColor(vec4(0.48,0.25,0.52,1));
@@ -429,9 +428,36 @@ function render() {
             gScale(0.4,2,0.4);
             drawCube();
         }
+        gPop();
+
+        gPush();
+        {//right hip
+            gTranslate(1,-8,-1);
+            gRotate(60,1,0,0);
+            gScale(0.4,2,0.4);
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//left leg
+            gTranslate(-1,-10.75,-4.25);
+            gRotate(65,1,0,0);
+            gScale(0.4,2,0.4);
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//right leg
+            gTranslate(1,-9.5,-4.75);
+            gRotate(75,1,0,0);
+            gScale(0.4,2,0.4);
+            drawCube();
+        }
+        gPop();
     }
     gPop();
-
     
     if( animFlag )
         window.requestAnimFrame(render);
