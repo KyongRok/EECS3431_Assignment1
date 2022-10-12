@@ -401,6 +401,32 @@ function render() {
         }gPop();
     }gPop();
 
+    gPush();
+    {//human aka Character
+        gScale(0.3,0.3,0.3);
+        gPush();
+        {//head
+            setColor(vec4(0.48,0.25,0.52,1));
+            drawSphere();
+        }
+        gPop();
+
+        gPush();
+        {//body
+            gScale(2,3,1);
+            gTranslate(0,-1.35,0);
+            gRotate(350,0,1,0);
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//left hip
+
+        }
+    }
+    gPop();
+
     
     if( animFlag )
         window.requestAnimFrame(render);
