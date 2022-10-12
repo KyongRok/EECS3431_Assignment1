@@ -279,9 +279,9 @@ function render() {
 
     gTranslate(-4,0,0) ;
     gPush() ;
-    { //floor (FOR KYONG, CHANGED TO LOOK GOOD FOR YROLL, OG: gScale(6,1.5,0);)
+    { //floor 
 		gTranslate(4,-5,0); //move to bottom of the canvas
-        gScale(6,1.5,6); //scale respect to x -> stretch side ways, y -> stretch upwards
+        gScale(20,1.5,20); //scale respect to x -> stretch side ways, y -> stretch upwards
         setColor(vec4(0.0,0.0,0.0,1.0)) ; //set color as black
         drawCube(); //draw cube
         
