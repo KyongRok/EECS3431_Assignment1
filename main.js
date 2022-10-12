@@ -313,10 +313,16 @@ function render() {
         addStrands();
     }
     gPop();
-
     gPush();
     { // seaweed strand 2
         gTranslate(4,-2.2,0);
+        draw_ellipse();
+        addStrands();
+    }
+    gPop();
+    gPush();
+    { // seaweed strand 3
+        gTranslate(4.5,-2.5,0);
         draw_ellipse();
         addStrands();
     }
