@@ -309,75 +309,9 @@ function render() {
     gPush();
     { //seaweed strand 1
         //let seaweed_movement = 40*Math.cos(TIME+180);
-        gPush();
-        { //ellipse 1
-            gTranslate(3.5,-2.5,0);
-            draw_ellipse();
-        }
-        gPop();
-
-        gPush();
-        { //ellipse 2
-            gTranslate(3.5,-1.9,0);
-            draw_ellipse();
-        }
-        gPop();
-        
-        gPush();
-        { //ellipse 3
-            gTranslate(3.5,-1.3,0);
-            draw_ellipse();
-        }
-        gPop();
-
-        gPush();
-        { //ellipse 4
-            gTranslate(3.5,-0.7,0);
-            draw_ellipse();
-        }
-        gPop();
-
-        gPush();
-        { //ellipse 5
-            gTranslate(3.5,-0.1,0);
-            draw_ellipse();
-        }
-        gPop();
-
-        gPush();
-        { //ellipse 6
-            gTranslate(3.5,0.5,0);
-            draw_ellipse();
-        }
-        gPop();
-
-        gPush();
-        { //ellipse 7
-            gTranslate(3.5,1.1,0);
-            draw_ellipse();
-        }
-        gPop();
-
-        gPush();
-        { //ellipse 8
-            gTranslate(3.5,1.7,0);
-            draw_ellipse();
-        }
-        gPop();
-
-        gPush();
-        { //ellipse 9
-            gTranslate(3.5,2.3,0);
-            draw_ellipse();
-        }
-        gPop();
-
-        gPush();
-        { //ellipse 10
-            gTranslate(3.5,2.9,0);
-            draw_ellipse();
-        }
-        gPop();
+        gTranslate(3.5,-2.5,0);
+        draw_ellipse();
+        addStrands(TIME);
     }
     gPop();
 
@@ -385,7 +319,7 @@ function render() {
     { // seaweed strand 2
         gTranslate(4,-2.2,0);
         draw_ellipse();
-        addStrands();
+        addStrands(TIME);
     }
     gPop();
 
@@ -455,23 +389,20 @@ function render() {
 }
 
 function addStrands(){
-    gTranslate(0,0.6,0);
-    draw_ellipse();
-    gTranslate(0,0.6,0);
-    draw_ellipse();
-    gTranslate(0,0.6,0);
-    draw_ellipse();
-    gTranslate(0,0.6,0);
-    draw_ellipse();
-    gTranslate(0,0.6,0);
-    draw_ellipse();
-    gTranslate(0,0.6,0);
-    draw_ellipse();
-    gTranslate(0,0.6,0);
-    draw_ellipse();
-    gTranslate(0,0.6,0);
-    draw_ellipse();
-    gTranslate(0,0.6,0);
+    drawBead(1);
+    drawBead(2);
+    drawBead(3);
+    drawBead(4);
+    drawBead(5);
+    drawBead(6);
+    drawBead(7);
+    drawBead(8);
+    drawBead(9);
+}
+function drawBead(start){
+    gTranslate(0,0.3,0);
+    gRotate(10*Math.cos(TIME+start), 0, 0, 1);
+    gTranslate(0,0.3,0);
     draw_ellipse();
 }
 
