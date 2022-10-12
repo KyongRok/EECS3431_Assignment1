@@ -306,9 +306,9 @@ function render() {
     }
     gPop() ;
     
-    gPush() ;
+    gPush();
     { //seaweed strand 1
-        let seaweed_movement = 40*Math.cos(TIME+180);
+        //let seaweed_movement = 40*Math.cos(TIME+180);
         gPush();
         { //ellipse 1
             gTranslate(3.5,-2.5,0);
@@ -319,7 +319,6 @@ function render() {
         gPush();
         { //ellipse 2
             gTranslate(3.5,-1.9,0);
-            gRotate(seaweed_movement,0,0,3.5);
             draw_ellipse();
         }
         gPop();
@@ -380,7 +379,15 @@ function render() {
         }
         gPop();
     }
-    gPop() ;
+    gPop();
+
+    gPush();
+    { // seaweed strand 2
+        gTranslate(4,-2.2,0);
+        draw_ellipse();
+        addStrands();
+    }
+    gPop();
 
     gPush() ;
     { //small rock
@@ -445,6 +452,27 @@ function render() {
     
     if( animFlag )
         window.requestAnimFrame(render);
+}
+
+function addStrands(){
+    gTranslate(0,0.6,0);
+    draw_ellipse();
+    gTranslate(0,0.6,0);
+    draw_ellipse();
+    gTranslate(0,0.6,0);
+    draw_ellipse();
+    gTranslate(0,0.6,0);
+    draw_ellipse();
+    gTranslate(0,0.6,0);
+    draw_ellipse();
+    gTranslate(0,0.6,0);
+    draw_ellipse();
+    gTranslate(0,0.6,0);
+    draw_ellipse();
+    gTranslate(0,0.6,0);
+    draw_ellipse();
+    gTranslate(0,0.6,0);
+    draw_ellipse();
 }
 
 // A simple camera controller which uses an HTML element as the event
