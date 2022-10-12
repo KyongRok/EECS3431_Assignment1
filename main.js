@@ -308,10 +308,9 @@ function render() {
     
     gPush();
     { //seaweed strand 1
-        //let seaweed_movement = 40*Math.cos(TIME+180);
         gTranslate(3.5,-2.5,0);
         draw_ellipse();
-        addStrands(TIME);
+        addStrands();
     }
     gPop();
 
@@ -319,7 +318,7 @@ function render() {
     { // seaweed strand 2
         gTranslate(4,-2.2,0);
         draw_ellipse();
-        addStrands(TIME);
+        addStrands();
     }
     gPop();
 
@@ -334,52 +333,98 @@ function render() {
     
     gPush();
     { //fish
-        gTranslate(3, -2.5, 2.5);
+        //vertical movement
+        gTranslate(3, 1*Math.cos(TIME) - 1.5, 2.5);
+        //rotation about seaweed and rock
+        gTranslate(1, 0, -2.5)
+        gRotate(TIME*25, 0, -1, 0);
+        gTranslate(-1, 0, 2.5)
+        //scale down
         gScale(0.5, 0.5, 0.5);
-        gPush();
-        { //body
+        gPush();{ //body
             gTranslate(2.5, 0, 0);
             gScale(4, 1, 1);
             gRotate(90, 0, 1, 0);
             setColor(red);
             drawCone();
-        }
-        gPop();
-        gPush();
-        { //face
+        }gPop();
+        gPush();{ //face
             gRotate(-90, 0, 1, 0);
             setColor(grey);
             drawCone();
-        }
-        gPop();
+        }gPop();
+        gPush();{ //left pupil
+            gTranslate(-0.3, 0.5, 0.5);
+            gScale(0.1, 0.1, 0.1);
+            setColor(black);
+            drawSphere();
+        }gPop();
+        gPush();{ //right pupil
+            gTranslate(-0.3, 0.5, -0.5);
+            gScale(0.1, 0.1, 0.1);
+            setColor(black);
+            drawSphere();
+        }gPop();
+        gPush();{ //left eyeball
+            gTranslate(-0.1, 0.5, -0.5);
+            gScale(0.25, 0.25, 0.25);
+            setColor(white);
+            drawSphere();
+        }gPop();
+        gPush();{ //right eyeball
+            gTranslate(-0.1, 0.5, 0.5);
+            gScale(0.25, 0.25, 0.25);
+            setColor(white);
+            drawSphere();
+        }gPop();
+        gTranslate(4.25, 0, 0);
+        gRotate(50*Math.cos(10*TIME), 0, 1, 0);
+        gTranslate(-4.25, 0, 0);
+        gPush();{ //tail
+            gPush();{ //upper tail
+                gTranslate(5.1, 0.75, 0);
+                gRotate(45, 0, 0, 1);
+                gScale(2, 0.25, 0.25);
+                gRotate(90, 0, 1, 0);
+                setColor(red);
+                drawCone();
+            }gPop();
+            gPush();{ //lower tail
+                gTranslate(4.8, -0.4, 0);
+                gRotate(45, 0, 0, -1);
+                gScale(1, 0.25, 0.25);
+                gRotate(90, 0, 1, 0);
+                setColor(red);
+                drawCone();
+            }gPop();
+            
+        }gPop();
+    }gPop();
+
+    gPush();
+    {//human aka Character
+        gScale(0.3,0.3,0.3);
         gPush();
-        { //eyes
-            gPush();{ //left pupil
-                gTranslate(-0.3, 0.5, 0.5);
-                gScale(0.1, 0.1, 0.1);
-                setColor(black);
-                drawSphere();
-            }gPop();
-            gPush();{ //right pupil
-                gTranslate(-0.3, 0.5, -0.5);
-                gScale(0.1, 0.1, 0.1);
-                setColor(black);
-                drawSphere();
-            }gPop();
-            gPush();{ //left eyeball
-                gTranslate(-0.1, 0.5, -0.5);
-                gScale(0.25, 0.25, 0.25);
-                setColor(white);
-                drawSphere();
-            }gPop();
-            gPush();{ //right eyeball
-                gTranslate(-0.1, 0.5, 0.5);
-                gScale(0.25, 0.25, 0.25);
-                setColor(white);
-                drawSphere();
-            }gPop();
+        {//head
+            setColor(vec4(0.48,0.25,0.52,1));
+            drawSphere();
         }
         gPop();
+
+        gPush();
+        {//body
+            gScale(2,3,1);
+            gTranslate(0,-1.35,0);
+            gRotate(350,0,1,0);
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//left hip
+
+        }
+
     }
     gPop();
 
@@ -389,21 +434,13 @@ function render() {
 }
 
 function addStrands(){
-    drawBead(1);
-    drawBead(2);
-    drawBead(3);
-    drawBead(4);
-    drawBead(5);
-    drawBead(6);
-    drawBead(7);
-    drawBead(8);
-    drawBead(9);
-}
-function drawBead(start){
-    gTranslate(0,0.3,0);
-    gRotate(10*Math.cos(TIME+start), 0, 0, 1);
-    gTranslate(0,0.3,0);
-    draw_ellipse();
+    for(let i = 1; i <= 9; i++){
+        gTranslate(0,0.3,0);
+        gRotate(15*Math.cos(TIME+i), 0, 0, 1);
+        gTranslate(0,0.3,0);
+        draw_ellipse();
+    }
+
 }
 
 // A simple camera controller which uses an HTML element as the event
