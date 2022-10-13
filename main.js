@@ -463,9 +463,27 @@ function render() {
         gPop();
     }
     gPop();
+
+    gPush();
+    {//bubble
+        setColor(white);
+        bubble_time = curTime-prevTime;
+        if(bubble_time < TIME){
+            draw_bubble();
+        }
+    }
+    gPop();
     
     if( animFlag )
         window.requestAnimFrame(render);
+}
+
+function draw_bubble(){ //draws shape of bubble
+    gPush();
+    {
+        drawSphere();
+    }
+    gPop();
 }
 
 function addStrands(){
