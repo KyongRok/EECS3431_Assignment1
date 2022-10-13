@@ -282,7 +282,7 @@ function render() {
     { //floor 
 		gTranslate(0,-5,0); //move to bottom of the canvas
         gScale(20,1.5,20); //scale respect to x -> stretch side ways, y -> stretch upwards
-        setColor(darkGrey) ; //set color as black
+        setColor(darkGrey) ; //set color as dark grey
         drawCube(); //draw cube
     }
     gPop();
