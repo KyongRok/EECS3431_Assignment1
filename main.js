@@ -505,7 +505,6 @@ function addStrands(){
         gTranslate(0,0.3,0);
         draw_ellipse();
     }
-
 }
 
 // A simple camera controller which uses an HTML element as the event
