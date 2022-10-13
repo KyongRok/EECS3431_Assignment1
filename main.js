@@ -225,7 +225,6 @@ function gPut(m) {
 function draw_ellipse(){
     gPush();
     {
-        setColor(vec4(0.0,0.52,0.0,1.0));
         gScale(0.15,0.3,0.15);
         drawSphere();
     }
@@ -275,72 +274,64 @@ function render() {
     var grey = vec4(0.5,0.5,0.5,1.0);
     var white = vec4(1,1,1,1.0);
     var black = vec4(0,0,0,1.0);
+    var darkGrey = vec4(0,0,0,1.0);
+    var purple = vec4(0.48,0.25,0.52,1);
+    var green = vec4(0.0,0.52,0.0,1.0);
 
-
-    gTranslate(-4,0,0) ;
-    gPush() ;
+    gPush();
     { //floor 
-		gTranslate(4,-5,0); //move to bottom of the canvas
+		gTranslate(0,-5,0); //move to bottom of the canvas
         gScale(20,1.5,20); //scale respect to x -> stretch side ways, y -> stretch upwards
-        setColor(vec4(0.0,0.0,0.0,1.0)) ; //set color as black
+        setColor(darkGrey) ; //set color as black
         drawCube(); //draw cube
-        
     }
-    gPop() ;
-    
-    gPush() ;
-    { //big rock
-        gTranslate(4,-2.8,0); //move to top of the floor
-        gScale(0.7,0.7,0.7); //scale less than 1 so it shrinks from all sides
-        setColor(vec4(0.5,0.5,0.5,1.0)); //set color to grey
-        drawSphere();
-    }
-    gPop() ;
-    
-    gPush() ;
-    { //small rock
-        gTranslate(3.1,-3.2,0); //smaller rock
-        gScale(0.3,0.3,0.3);
-        setColor(vec4(0.5,0.5,0.5,1.0));
-        drawSphere();
-    }
-    gPop() ;
+    gPop();
     
     gPush();
+    { //big rock
+        gTranslate(0,-2.8,0); //move to top of the floor
+        gScale(0.7,0.7,0.7); //scale less than 1 so it shrinks from all sides
+        setColor(grey); //set color to grey
+        drawSphere();
+    }
+    gPop();
+
+    gPush() ;
+    { //small rock
+        gTranslate(-1,-3.2,0); //smaller rock
+        gScale(0.3,0.3,0.3);
+        setColor(grey);
+        drawSphere();
+    }
+    gPop() ;
+    
+    setColor(green);
+    gPush();
     { //seaweed strand 1
-        gTranslate(3.3,-2.4,0);
+        gTranslate(0.7,-2.4,0);
         draw_ellipse();
         addStrands();
     }
     gPop();
     gPush();
     { // seaweed strand 2
-        gTranslate(4,-1.8,0);
+        gTranslate(0,-1.8,0);
         draw_ellipse();
         addStrands();
     }
     gPop();
     gPush();
     { // seaweed strand 3
-        gTranslate(4.7,-2.4,0);
+        gTranslate(-0.7,-2.4,0);
         draw_ellipse();
         addStrands();
     }
     gPop();
-
-    gPush() ;
-    { //small rock
-        gTranslate(3.1,-3.2,0); //smaller rock
-        gScale(0.3,0.3,0.3);
-        setColor(vec4(0.5,0.5,0.5,1.0));
-        drawSphere();
-    }
-    gPop() ;
     
     gPush();
     { //fish
         //vertical movement
-        gTranslate(3, 1*Math.cos(TIME) - 1.5, 2.5);
+        gTranslate(-1, 1*Math.cos(TIME) - 1.5, 2.5);
         //rotation about seaweed and rock
         gTranslate(1, 0, -2.5)
         gRotate(TIME*25, 0, -1, 0);
@@ -359,81 +350,69 @@ function render() {
             setColor(grey);
             drawCone();
         }gPop();
+        setColor(black);
         gPush();{ //left pupil
             gTranslate(-0.3, 0.5, 0.5);
             gScale(0.1, 0.1, 0.1);
-            setColor(black);
             drawSphere();
         }gPop();
         gPush();{ //right pupil
             gTranslate(-0.3, 0.5, -0.5);
             gScale(0.1, 0.1, 0.1);
-            setColor(black);
             drawSphere();
         }gPop();
+        setColor(white);
         gPush();{ //left eyeball
             gTranslate(-0.1, 0.5, -0.5);
             gScale(0.25, 0.25, 0.25);
-            setColor(white);
             drawSphere();
         }gPop();
         gPush();{ //right eyeball
             gTranslate(-0.1, 0.5, 0.5);
             gScale(0.25, 0.25, 0.25);
-            setColor(white);
             drawSphere();
         }gPop();
         gTranslate(4.25, 0, 0);
         gRotate(50*Math.cos(10*TIME), 0, 1, 0);
         gTranslate(-4.25, 0, 0);
-        gPush();{ //tail
-            gPush();{ //upper tail
-                gTranslate(5.1, 0.75, 0);
-                gRotate(45, 0, 0, 1);
-                gScale(2, 0.25, 0.25);
-                gRotate(90, 0, 1, 0);
-                setColor(red);
-                drawCone();
-            }gPop();
-            gPush();{ //lower tail
-                gTranslate(4.8, -0.4, 0);
-                gRotate(45, 0, 0, -1);
-                gScale(1, 0.25, 0.25);
-                gRotate(90, 0, 1, 0);
-                setColor(red);
-                drawCone();
-            }gPop();
-            
+        setColor(red);
+        gPush();{ //upper tail
+            gTranslate(5.1, 0.75, 0);
+            gRotate(45, 0, 0, 1);
+            gScale(2, 0.25, 0.25);
+            gRotate(90, 0, 1, 0);
+            drawCone();
+        }gPop();
+        gPush();{ //lower tail
+            gTranslate(4.8, -0.4, 0);
+            gRotate(45, 0, 0, -1);
+            gScale(1, 0.25, 0.25);
+            gRotate(90, 0, 1, 0);
+            drawCone();
         }gPop();
     }gPop();
 
     gPush();
     {//human aka Character
-        
-        gRotate(340,0,1,0); //rotate whole body
+        gRotate(330,0,1,0); //rotate whole body
         gScale(0.275,0.275,0.275); //scale
-        gTranslate(Math.cos(TIME), Math.cos(TIME),0);
-        gTranslate(25,8,-15); 
+        gTranslate(2*Math.cos(TIME)+8, 2*Math.cos(TIME)+8, -15);
+        setColor(purple);
         gPush();
         {//head
-            setColor(vec4(0.48,0.25,0.52,1));
             drawSphere();
         }
         gPop();
-
         gPush();
         {//body
-            setColor(vec4(0.48,0.25,0.52,1));
             gScale(2,3,1);
             gTranslate(0,-1.35,0);
             drawCube();
         }
         gPop();
-
         gPush();
         {//left hip
-            setColor(vec4(0.48,0.25,0.52,1));
-            //gRotate(8*Math.cos(TIME) , -0.5,0,0);
+            gRotate(8*Math.cos(TIME), -1, 0,0);
             gTranslate(-1,-8.5,-2);
             gRotate(45,1,0,0);
             gScale(0.4,2,0.4);
@@ -442,17 +421,14 @@ function render() {
         gPop();
         gPush();
         {//right hip
-            setColor(vec4(0.48,0.25,0.52,1));
             gTranslate(1,-8,-1);
             gRotate(60,1,0,0);
             gScale(0.4,2,0.4);
             drawCube();
         }
         gPop();
-
         gPush();
         {//left leg
-            setColor(vec4(0.48,0.25,0.52,1));
             //gRotate(8*Math.cos(TIME) , -0.5,0,0);
             gTranslate(-1,-10.75,-5.25);
             gRotate(65,1,0,0);
@@ -460,31 +436,24 @@ function render() {
             drawCube();
         }
         gPop();
-
         gPush();
         {//right leg
-            setColor(vec4(0.48,0.25,0.52,1));
             gTranslate(1,-9.5,-4.75);
             gRotate(75,1,0,0);
             gScale(0.4,2,0.4);
             drawCube();
         }
         gPop();
-
         gPush();
         {//left feet
-            setColor(vec4(0.48,0.25,0.52,1));
-            //gRotate(8*Math.cos(TIME) , -0.5,0,0);
             gTranslate(-1 ,-12 ,-7);
             gRotate(335,1,0,0);
             gScale(0.5,1,0.1)
             drawCube();
         }
         gPop();
-
         gPush();
         {//right feet
-            setColor(vec4(0.48,0.25,0.52,1));
             gTranslate(1 ,-10.5 ,-6.5);
             gRotate(335,1,0,0);
             gScale(0.5,1,0.1)
