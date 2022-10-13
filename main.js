@@ -225,7 +225,7 @@ function gPut(m) {
 function draw_ellipse(){
     gPush();
     {
-        setColor(vec4(0.0,1.0,0.0,1.0));
+        setColor(vec4(0.0,0.52,0.0,1.0));
         gScale(0.15,0.3,0.15);
         drawSphere();
     }
