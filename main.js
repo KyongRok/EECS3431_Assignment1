@@ -409,9 +409,11 @@ function render() {
 
     gPush();
     {//human aka Character
+        
         gRotate(340,0,1,0); //rotate whole body
         gScale(0.275,0.275,0.275); //scale
-        gTranslate(25,8,-15); //not yet done
+        gTranslate(Math.cos(TIME), Math.cos(TIME),0);
+        gTranslate(25,8,-15); 
         gPush();
         {//head
             setColor(vec4(0.48,0.25,0.52,1));
@@ -431,7 +433,8 @@ function render() {
         gPush();
         {//left hip
             setColor(vec4(0.48,0.25,0.52,1));
-            gTranslate(-1,-8.5,-1);
+            gRotate(8*Math.cos(TIME) , -0.5,0,0);
+            gTranslate(-1,-8.5,-2);
             gRotate(45,1,0,0);
             gScale(0.4,2,0.4);
             drawCube();
@@ -450,7 +453,8 @@ function render() {
         gPush();
         {//left leg
             setColor(vec4(0.48,0.25,0.52,1));
-            gTranslate(-1,-10.75,-4.25);
+            gRotate(8*Math.cos(TIME) , -0.5,0,0);
+            gTranslate(-1,-10.75,-5.25);
             gRotate(65,1,0,0);
             gScale(0.4,2,0.4);
             drawCube();
@@ -470,7 +474,8 @@ function render() {
         gPush();
         {//left feet
             setColor(vec4(0.48,0.25,0.52,1));
-            gTranslate(-1 ,-12 ,-6);
+            gRotate(8*Math.cos(TIME) , -0.5,0,0);
+            gTranslate(-1 ,-12 ,-7);
             gRotate(335,1,0,0);
             gScale(0.5,1,0.1)
             drawCube();
