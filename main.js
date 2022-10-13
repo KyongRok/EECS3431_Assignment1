@@ -274,7 +274,8 @@ function render() {
     var grey = vec4(0.5,0.5,0.5,1.0);
     var white = vec4(1,1,1,1.0);
     var black = vec4(0,0,0,1.0);
-    var darkGrey = vec4(0,0,0,1.0);
+    var darkGrey = vec4(0.1,0.3,0.1,1.0);
+    var darkRed = vec4(0.4,0,0,1.0);
     var purple = vec4(0.48,0.25,0.52,1);
     var green = vec4(0.0,0.52,0.0,1.0);
 
@@ -342,7 +343,7 @@ function render() {
             gTranslate(2.5, 0, 0);
             gScale(4, 1, 1);
             gRotate(90, 0, 1, 0);
-            setColor(red);
+            setColor(darkRed);
             drawCone();
         }gPop();
         gPush();{ //face
@@ -375,7 +376,7 @@ function render() {
         gTranslate(4.25, 0, 0);
         gRotate(50*Math.cos(10*TIME), 0, 1, 0);
         gTranslate(-4.25, 0, 0);
-        setColor(red);
+        setColor(darkRed);
         gPush();{ //upper tail
             gTranslate(5.1, 0.75, 0);
             gRotate(45, 0, 0, 1);
