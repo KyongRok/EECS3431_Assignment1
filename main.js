@@ -467,8 +467,8 @@ function render() {
     gPush();
     {//bubble
         setColor(white);
-        bubble_time = curTime-prevTime;
-        if(bubble_time < TIME){
+        
+        if(TIME >= 5){
             draw_bubble();
         }
     }
