@@ -311,6 +311,7 @@ function render() {
         gTranslate(3.3,-2.4,0);
         draw_ellipse();
         addStrands();
+        addLastEllipse();
     }
     gPop();
     gPush();
@@ -318,6 +319,7 @@ function render() {
         gTranslate(4,-1.8,0);
         draw_ellipse();
         addStrands();
+        addLastEllipse();
     }
     gPop();
     gPush();
@@ -325,6 +327,7 @@ function render() {
         gTranslate(4.7,-2.4,0);
         draw_ellipse();
         addStrands();
+        addLastEllipse();
     }
     gPop();
 
@@ -499,13 +502,20 @@ function render() {
 }
 
 function addStrands(){
-    for(let i = 1; i <= 9; i++){
+    //ellipses have side to side movement and rotational movements
+    for(let i = 1; i <= 8; i++){
         gTranslate(0,0.3,0);
         gRotate(15*Math.cos(TIME+i), 0, 0, 1);
         gTranslate(0,0.3,0);
         draw_ellipse();
     }
 
+}
+function addLastEllipse(){
+    //last ellipse does not have rotation, only move side to side
+    gTranslate(0,0.3,0);
+    gTranslate(0,0.3,0);
+    draw_ellipse();
 }
 
 // A simple camera controller which uses an HTML element as the event
