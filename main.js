@@ -509,7 +509,6 @@ function addStrands(){
         gTranslate(0,0.3,0);
         draw_ellipse();
     }
-
 }
 function addLastEllipse(){
     //last ellipse does not have rotation, only move side to side
