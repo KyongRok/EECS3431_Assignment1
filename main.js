@@ -290,8 +290,8 @@ function render() {
     
     gPush() ;
     { //big rock
-        gTranslate(4,-3,0); //move to top of the floor
-        gScale(0.5,0.5,0.5); //scale less than 1 so it shrinks from all sides
+        gTranslate(4,-2.8,0); //move to top of the floor
+        gScale(0.7,0.7,0.7); //scale less than 1 so it shrinks from all sides
         setColor(vec4(0.5,0.5,0.5,1.0)); //set color to grey
         drawSphere();
     }
@@ -308,21 +308,21 @@ function render() {
     
     gPush();
     { //seaweed strand 1
-        gTranslate(3.5,-2.5,0);
+        gTranslate(3.3,-2.4,0);
         draw_ellipse();
         addStrands();
     }
     gPop();
     gPush();
     { // seaweed strand 2
-        gTranslate(4,-2.2,0);
+        gTranslate(4,-1.8,0);
         draw_ellipse();
         addStrands();
     }
     gPop();
     gPush();
     { // seaweed strand 3
-        gTranslate(4.5,-2.5,0);
+        gTranslate(4.7,-2.4,0);
         draw_ellipse();
         addStrands();
     }
@@ -433,7 +433,7 @@ function render() {
         gPush();
         {//left hip
             setColor(vec4(0.48,0.25,0.52,1));
-            gRotate(8*Math.cos(TIME) , -0.5,0,0);
+            //gRotate(8*Math.cos(TIME) , -0.5,0,0);
             gTranslate(-1,-8.5,-2);
             gRotate(45,1,0,0);
             gScale(0.4,2,0.4);
@@ -453,7 +453,7 @@ function render() {
         gPush();
         {//left leg
             setColor(vec4(0.48,0.25,0.52,1));
-            gRotate(8*Math.cos(TIME) , -0.5,0,0);
+            //gRotate(8*Math.cos(TIME) , -0.5,0,0);
             gTranslate(-1,-10.75,-5.25);
             gRotate(65,1,0,0);
             gScale(0.4,2,0.4);
@@ -474,7 +474,7 @@ function render() {
         gPush();
         {//left feet
             setColor(vec4(0.48,0.25,0.52,1));
-            gRotate(8*Math.cos(TIME) , -0.5,0,0);
+            //gRotate(8*Math.cos(TIME) , -0.5,0,0);
             gTranslate(-1 ,-12 ,-7);
             gRotate(335,1,0,0);
             gScale(0.5,1,0.1)
