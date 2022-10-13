@@ -410,8 +410,8 @@ function render() {
     gPush();
     {//human aka Character
         gRotate(340,0,1,0); //rotate whole body
-        gScale(0.5,0.5,0.5); //scale
-        gTranslate(0,8,0); //not yet done
+        gScale(0.275,0.275,0.275); //scale
+        gTranslate(25,8,-15); //not yet done
         gPush();
         {//head
             setColor(vec4(0.48,0.25,0.52,1));
@@ -421,6 +421,7 @@ function render() {
 
         gPush();
         {//body
+            setColor(vec4(0.48,0.25,0.52,1));
             gScale(2,3,1);
             gTranslate(0,-1.35,0);
             drawCube();
@@ -429,6 +430,7 @@ function render() {
 
         gPush();
         {//left hip
+            setColor(vec4(0.48,0.25,0.52,1));
             gTranslate(-1,-8.5,-1);
             gRotate(45,1,0,0);
             gScale(0.4,2,0.4);
@@ -438,6 +440,7 @@ function render() {
 
         gPush();
         {//right hip
+            setColor(vec4(0.48,0.25,0.52,1));
             gTranslate(1,-8,-1);
             gRotate(60,1,0,0);
             gScale(0.4,2,0.4);
@@ -447,6 +450,7 @@ function render() {
 
         gPush();
         {//left leg
+            setColor(vec4(0.48,0.25,0.52,1));
             gTranslate(-1,-10.75,-4.25);
             gRotate(65,1,0,0);
             gScale(0.4,2,0.4);
@@ -456,9 +460,30 @@ function render() {
 
         gPush();
         {//right leg
+            setColor(vec4(0.48,0.25,0.52,1));
             gTranslate(1,-9.5,-4.75);
             gRotate(75,1,0,0);
             gScale(0.4,2,0.4);
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//left feet
+            setColor(vec4(0.48,0.25,0.52,1));
+            gTranslate(-1 ,-12 ,-6);
+            gRotate(335,1,0,0);
+            gScale(0.5,1,0.1)
+            drawCube();
+        }
+        gPop();
+
+        gPush();
+        {//right feet
+            setColor(vec4(0.48,0.25,0.52,1));
+            gTranslate(1 ,-10.5 ,-6.5);
+            gRotate(335,1,0,0);
+            gScale(0.5,1,0.1)
             drawCube();
         }
         gPop();
