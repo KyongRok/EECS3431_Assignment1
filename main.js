@@ -397,13 +397,12 @@ function render() {
     {//human aka Character
         gRotate(330,0,1,0); //rotate whole body
         gScale(0.275,0.275,0.275); //scale
-        gTranslate(2*Math.cos(TIME)+8, 2*Math.cos(TIME)+8, -15);
+        var pos = 2*Math.cos(TIME)+8;
+        gTranslate(pos, pos, -15);
         setColor(purple);
-        gPush();
-        {//head
+        gPush(); {//head
             drawSphere();
-        }
-        gPop();
+        } gPop();
         gPush();
         {//body
             gScale(2,3,1);
@@ -411,71 +410,80 @@ function render() {
             drawCube();
         }
         gPop();
-        gPush();
-        {//left hip
-            gRotate(8*Math.cos(TIME), -1, 0,0);
-            gTranslate(-1,-8.5,-2);
-            gRotate(45,1,0,0);
-            gScale(0.4,2,0.4);
-            drawCube();
-        }
-        gPop();
-        gPush();
-        {//right hip
-            gTranslate(1,-8,-1);
-            gRotate(60,1,0,0);
-            gScale(0.4,2,0.4);
-            drawCube();
-        }
-        gPop();
-        gPush();
-        {//left leg
-            //gRotate(8*Math.cos(TIME) , -0.5,0,0);
-            gTranslate(-1,-10.75,-5.25);
-            gRotate(65,1,0,0);
-            gScale(0.4,2,0.4);
-            drawCube();
-        }
-        gPop();
-        gPush();
-        {//right leg
-            gTranslate(1,-9.5,-4.75);
-            gRotate(75,1,0,0);
-            gScale(0.4,2,0.4);
-            drawCube();
-        }
-        gPop();
-        gPush();
-        {//left feet
-            gTranslate(-1 ,-12 ,-7);
-            gRotate(335,1,0,0);
-            gScale(0.5,1,0.1)
-            drawCube();
-        }
-        gPop();
-        gPush();
-        {//right feet
-            gTranslate(1 ,-10.5 ,-6.5);
-            gRotate(335,1,0,0);
-            gScale(0.5,1,0.1)
-            drawCube();
-        }
-        gPop();
+        gPush();{
+            //gTranslate(0, -1, 0);
+            //gRotate(8*Math.cos(TIME), -1, 0,0);
+            //gTranslate(0, 1, 0);
+            gPush();
+            {//left hip
+                gTranslate(-1,-8.5,-2);
+                gRotate(45,1,0,0);
+                gScale(0.4,2,0.4);
+                drawCube();
+            }
+            gPop();
+            //gTranslate(0, -1, 0);
+            //gRotate(8*Math.cos(TIME), -1, 0,0);
+            //gTranslate(0, 1, 0);
+            gPush();
+            {//left leg
+                //gRotate(8*Math.cos(TIME) , -0.5,0,0);
+                gTranslate(-1,-10.75,-5.25);
+                gRotate(65,1,0,0);
+                gScale(0.4,2,0.4);
+                drawCube();
+            }
+            gPop();
+            gPush();
+            {//left feet
+                gTranslate(-1 ,-12 ,-7);
+                gRotate(335,1,0,0);
+                gScale(0.5,1,0.1)
+                drawCube();
+            }
+            gPop();
+        }gPop();
+        gPush();{
+            //gTranslate(0, -1, 0);
+            //gRotate(8*Math.cos(TIME), -1, 0,0);
+            //gTranslate(0, 1, 0);
+            gPush();
+            {//right hip
+                gTranslate(1,-8,-1);
+                gRotate(60,1,0,0);
+                gScale(0.4,2,0.4);
+                drawCube();
+            }
+            gPop();
+            //gTranslate(0, -1, 0);
+            //gRotate(8*Math.cos(TIME), -1, 0,0);
+            //gTranslate(0, 1, 0);
+            gPush();
+            {//right leg
+                gTranslate(1,-9.5,-4.75);
+                gRotate(75,1,0,0);
+                gScale(0.4,2,0.4);
+                drawCube();
+            }
+            gPop();
+            gPush();
+            {//right feet
+                gTranslate(1 ,-10.5 ,-6.5);
+                gRotate(335,1,0,0);
+                gScale(0.5,1,0.1)
+                drawCube();
+            }
+            gPop();
+        }gPop();
     }
     gPop();
 
     gPush();
-    {//bubble
+    {
         setColor(white);
-        //gScale(0,0.9,0);
-        bubble_time = curTime-prevTime;
-            // if(bubble_time +5 < TIME){
-            //     draw_bubble();
-            // }
-            if(TIME > 5){
-                draw_bubble();
-            }
-
+        if(TIME > 2){
+            draw_bubble(pos);
+        }
     }
     gPop();
     
@@ -483,12 +491,14 @@ function render() {
         window.requestAnimFrame(render);
 }
 
-function draw_bubble(){ //draws shape of bubble
-    gPush();
-    {
+function draw_bubble(pos){ //draws shape of bubble
+    gPush();{
+        gRotate(330,0,1,0);
+        gScale(0.275,0.275,0.275);
+        gTranslate(pos, pos, -13);
+        gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
         drawSphere();
-    }
-    gPop();
+    }gPop();
 }
 
 function addStrands(){
