@@ -399,10 +399,11 @@ function render() {
 
     gPush();
     {//human aka Character
-        //gRotate(330,0,1,0); //rotate whole body
+        gRotate(330,0,1,0); //rotate whole body
+        //gRotate(90, 0, 1, 0); //for testing
         gScale(0.275,0.275,0.275); //scale
         var pos = 2*Math.cos(TIME)+8;
-        gTranslate(8, 8, -15); //change to pos
+        gTranslate(pos, pos, -15); //change to pos
         setColor(purple);
         gPush(); {//head
             drawSphere();
@@ -415,9 +416,9 @@ function render() {
         }
         gPop();
         gPush();{
-            //gTranslate(0, -1, 0);
-            //gRotate(8*Math.cos(TIME), -1, 0,0);
-            //gTranslate(0, 1, 0);
+            gTranslate(0, -5, 0);
+            gRotate(8*Math.cos(TIME), -1, 0,0);
+            gTranslate(0, 5, 0);
             gPush();
             {//left hip
                 gTranslate(-1,-8.5,-1.5);
@@ -426,12 +427,11 @@ function render() {
                 drawCube();
             }
             gPop();
-            //gTranslate(0, -1, 0);
-            //gRotate(8*Math.cos(TIME), -1, 0,0);
-            //gTranslate(0, 1, 0);
+            gTranslate(0, -10.5, -2.25);
+            gRotate(8*Math.cos(TIME+9), -1, 0,0);
+            gTranslate(0, 10.5, 2.25);
             gPush();
             {//left leg
-                //gRotate(8*Math.cos(TIME) , -0.5,0,0);
                 gTranslate(-1,-10.75,-4.75);
                 gRotate(65,1,0,0);
                 gScale(0.4,2,0.4);
@@ -448,9 +448,9 @@ function render() {
             gPop();
         }gPop();
         gPush();{
-            gTranslate(0, -1, 0);
-            gRotate(8*Math.cos(TIME), -1, 0,0);
-            gTranslate(0, 1, 0);
+            gTranslate(0, -5, 0);
+            gRotate(8*Math.cos(TIME+9), -1, 0,0);
+            gTranslate(0, 5, 0);
             gPush();
             {//right hip
                 gTranslate(1,-8.5,-1.5);
@@ -459,9 +459,9 @@ function render() {
                 drawCube();
             }
             gPop();
-            //gTranslate(0, -1, 0);
-            //gRotate(8*Math.cos(TIME), -1, 0,0);
-            //gTranslate(0, 1, 0);
+            gTranslate(0, -10.5, -2.25);
+            gRotate(8*Math.cos(TIME+9), -1, 0,0);
+            gTranslate(0, 10.5, 2.25);
             gPush();
             {//right leg
                 gTranslate(1,-10.75,-4.75);
