@@ -402,7 +402,7 @@ function render() {
         //gRotate(330,0,1,0); //rotate whole body
         gScale(0.275,0.275,0.275); //scale
         var pos = 2*Math.cos(TIME)+8;
-        gTranslate(pos, pos, -15);
+        gTranslate(8, 8, -15); //change to pos
         setColor(purple);
         gPush(); {//head
             drawSphere();
@@ -448,9 +448,9 @@ function render() {
             gPop();
         }gPop();
         gPush();{
-            //gTranslate(0, -1, 0);
-            //gRotate(8*Math.cos(TIME), -1, 0,0);
-            //gTranslate(0, 1, 0);
+            gTranslate(0, -1, 0);
+            gRotate(8*Math.cos(TIME), -1, 0,0);
+            gTranslate(0, 1, 0);
             gPush();
             {//right hip
                 gTranslate(1,-8.5,-1.5);
