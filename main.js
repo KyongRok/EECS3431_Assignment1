@@ -395,7 +395,7 @@ function render() {
 
     gPush();
     {//human aka Character
-        gRotate(330,0,1,0); //rotate whole body
+        //gRotate(330,0,1,0); //rotate whole body
         gScale(0.275,0.275,0.275); //scale
         var pos = 2*Math.cos(TIME)+8;
         gTranslate(pos, pos, -15);
@@ -416,7 +416,7 @@ function render() {
             //gTranslate(0, 1, 0);
             gPush();
             {//left hip
-                gTranslate(-1,-8.5,-2);
+                gTranslate(-1,-8.5,-1.5);
                 gRotate(45,1,0,0);
                 gScale(0.4,2,0.4);
                 drawCube();
@@ -428,7 +428,7 @@ function render() {
             gPush();
             {//left leg
                 //gRotate(8*Math.cos(TIME) , -0.5,0,0);
-                gTranslate(-1,-10.75,-5.25);
+                gTranslate(-1,-10.75,-4.75);
                 gRotate(65,1,0,0);
                 gScale(0.4,2,0.4);
                 drawCube();
@@ -436,7 +436,7 @@ function render() {
             gPop();
             gPush();
             {//left feet
-                gTranslate(-1 ,-12 ,-7);
+                gTranslate(-1 ,-12 ,-6.5);
                 gRotate(335,1,0,0);
                 gScale(0.5,1,0.1)
                 drawCube();
@@ -449,8 +449,8 @@ function render() {
             //gTranslate(0, 1, 0);
             gPush();
             {//right hip
-                gTranslate(1,-8,-1);
-                gRotate(60,1,0,0);
+                gTranslate(1,-8.5,-1.5);
+                gRotate(45,1,0,0);
                 gScale(0.4,2,0.4);
                 drawCube();
             }
@@ -460,15 +460,15 @@ function render() {
             //gTranslate(0, 1, 0);
             gPush();
             {//right leg
-                gTranslate(1,-9.5,-4.75);
-                gRotate(75,1,0,0);
+                gTranslate(1,-10.75,-4.75);
+                gRotate(65,1,0,0);
                 gScale(0.4,2,0.4);
                 drawCube();
             }
             gPop();
             gPush();
             {//right feet
-                gTranslate(1 ,-10.5 ,-6.5);
+                gTranslate(1 ,-12 ,-6.5);
                 gRotate(335,1,0,0);
                 gScale(0.5,1,0.1)
                 drawCube();
