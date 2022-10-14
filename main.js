@@ -467,10 +467,15 @@ function render() {
     gPush();
     {//bubble
         setColor(white);
-        
-        if(TIME >= 5){
-            draw_bubble();
-        }
+        //gScale(0,0.9,0);
+        bubble_time = curTime-prevTime;
+            // if(bubble_time +5 < TIME){
+            //     draw_bubble();
+            // }
+            if(TIME > 5){
+                draw_bubble();
+            }
+
     }
     gPop();
     
