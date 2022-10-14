@@ -428,7 +428,7 @@ function render() {
             }
             gPop();
             gTranslate(0, -10.5, -2.25);
-            gRotate(8*Math.cos(TIME+9), -1, 0,0);
+            gRotate(8*Math.cos(TIME), -1, 0,0);
             gTranslate(0, 10.5, 2.25);
             gPush();
             {//left leg
