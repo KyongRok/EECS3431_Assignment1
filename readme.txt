@@ -14,5 +14,11 @@ Required Elements Added:
 8. Fish animation.
 9. Human modling without arms.
 10. Human moves in x and y direction 
+11. Human legs kicks (rotation on hips and knees) while feet does not 
 
 Required Elements Not Added:
+
+** Source of base codes **
+This assignment was done on top of the template code provided by professor through eclass and we added 
+our own functions and drew our objects in function render();
+
