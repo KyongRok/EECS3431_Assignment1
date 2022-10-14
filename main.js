@@ -44,7 +44,11 @@ var TIME = 0.0 ; // Realtime
 var prevTime = 0.0 ;
 var resetTimerFlag = true ;
 var animFlag = false ;
-var controller ;
+var controller;
+
+var bubbleCount = 0;
+var bubbleBurst = Math.floor(Math.random()*2+5);
+var lastPos = 0;
 
 function setColor(c)
 {
@@ -481,8 +485,9 @@ function render() {
     gPush();
     {
         setColor(white);
-        if(TIME > 2){
-            draw_bubble(pos);
+        if(TIME <= 12){
+            lastPos = pos;
+            createBubble();
         }
     }
     gPop();
@@ -491,11 +496,11 @@ function render() {
         window.requestAnimFrame(render);
 }
 
-function draw_bubble(pos){ //draws shape of bubble
+function createBubble(){ //draws shape of bubble
     gPush();{
         gRotate(330,0,1,0);
         gScale(0.275,0.275,0.275);
-        gTranslate(pos, pos, -13);
+        gTranslate(lastPos, lastPos+TIME, -13);
         gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
         drawSphere();
     }gPop();
