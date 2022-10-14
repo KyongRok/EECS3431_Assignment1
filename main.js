@@ -49,6 +49,7 @@ var controller;
 var bubbleCount = 0;
 var bubbleBurst = Math.floor(Math.random()*2+5);
 var lastPos = 0;
+var used = 0;
 
 function setColor(c)
 {
@@ -223,16 +224,6 @@ function gPush() {
 // puts the given matrix at the top of the stack MS
 function gPut(m) {
 	MS.push(m) ;
-}
-
-//draws ellipse shapes
-function draw_ellipse(){
-    gPush();
-    {
-        gScale(0.15,0.3,0.15);
-        drawSphere();
-    }
-    gPop();
 }
 
 function render() {
@@ -485,10 +476,11 @@ function render() {
     gPush();
     {
         setColor(white);
-        if(TIME <= 12){
+        if(used == 0){
             lastPos = pos;
-            createBubble();
+            used = 1;
         }
+        createBubble();
     }
     gPop();
     
@@ -498,12 +490,24 @@ function render() {
 
 function createBubble(){ //draws shape of bubble
     gPush();{
-        gRotate(330,0,1,0);
-        gScale(0.275,0.275,0.275);
-        gTranslate(lastPos, lastPos+TIME, -13);
-        gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
-        drawSphere();
+        if(TIME <= 12){
+            gRotate(330,0,1,0);
+            gScale(0.275,0.275,0.275);
+            gTranslate(lastPos, lastPos+TIME, -13);
+            gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
+            drawSphere();
+        }
     }gPop();
+}
+
+//draws ellipse shapes
+function draw_ellipse(){
+    gPush();
+    {
+        gScale(0.15,0.3,0.15);
+        drawSphere();
+    }
+    gPop();
 }
 
 function addStrands(){
