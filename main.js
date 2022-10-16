@@ -47,8 +47,8 @@ var animFlag = false ;
 var controller;
 
 var bubbleBurst = Math.floor(Math.random()*2+5);
-var lastPos = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var used = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var lastPos = [];
+var used = [];
 var currBubble = 0;
 
 function setColor(c)
@@ -476,10 +476,9 @@ function render() {
     gPush();
     {
         setColor(white);
-        for(let i = 0; i < currBubble; i++){
-            if(used[i] == 0){
-                lastPos[i] = pos;
-                used[i] = 1;
+        for(let i = 0; i <= currBubble; i++){
+            if(lastPos.length == i){
+                lastPos.push(pos);
             }
             createBubble(i);
         }
