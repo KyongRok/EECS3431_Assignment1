@@ -491,12 +491,12 @@ function render() {
         window.requestAnimFrame(render);
 }
 
-function createBubble(currBubble){ //draws shape of bubble
+function createBubble(num){ //draws shape of bubble
     gPush();{
         if(TIME <= 12){
             gRotate(330,0,1,0);
             gScale(0.275,0.275,0.275);
-            gTranslate(lastPos[currBubble], lastPos[currBubble]+TIME, -13);
+            gTranslate(lastPos[num], lastPos[num]+TIME, -13);
             gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
             drawSphere();
         }
