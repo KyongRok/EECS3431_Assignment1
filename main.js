@@ -46,10 +46,10 @@ var resetTimerFlag = true ;
 var animFlag = false ;
 var controller;
 
-var bubbleCount = 0;
 var bubbleBurst = Math.floor(Math.random()*2+5);
-var lastPos = 0;
-var used = 0;
+var lastPos = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var used = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var currBubble = 0;
 
 function setColor(c)
 {
@@ -476,11 +476,14 @@ function render() {
     gPush();
     {
         setColor(white);
-        if(used == 0){
-            lastPos = pos;
-            used = 1;
+        for(let i = 0; i < currBubble; i++){
+            if(used[i] == 0){
+                lastPos[i] = pos;
+                used[i] = 1;
+            }
+            createBubble(i);
         }
-        createBubble();
+        currBubble++;
     }
     gPop();
     
@@ -488,12 +491,12 @@ function render() {
         window.requestAnimFrame(render);
 }
 
-function createBubble(){ //draws shape of bubble
+function createBubble(currBubble){ //draws shape of bubble
     gPush();{
         if(TIME <= 12){
             gRotate(330,0,1,0);
             gScale(0.275,0.275,0.275);
-            gTranslate(lastPos, lastPos+TIME, -13);
+            gTranslate(lastPos[currBubble], lastPos[currBubble]+TIME, -13);
             gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
             drawSphere();
         }
