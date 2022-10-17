@@ -46,10 +46,10 @@ var resetTimerFlag = true ;
 var animFlag = false ;
 var controller;
 
-var bubbleBurst = Math.floor(Math.random()*2+5);
-var lastPos = [];
-var used = [];
-var currBubble = 0;
+// var bubbleBurst = Math.floor(Math.random()*2+5);
+// var lastPos = [];
+// var used = [];
+// var currBubble = 0;
 
 function setColor(c)
 {
@@ -225,6 +225,56 @@ function gPush() {
 function gPut(m) {
 	MS.push(m) ;
 }
+
+// ** functions needed to create bubble **
+var Bubble = {};
+ var random_bubble; //random between 5 or 4
+ if(Math.random() > 0.5){
+     random_bubble = 5;
+ }else{
+     random_bubble = 4;
+ }
+var Bubble_timer = 0; //time the bubble to disappear
+var burst_timer = 4; //time for bubbles to burst out
+var inhibitor = 0; //helper variable that stops loops going out of index
+var bubble_shoot_timer = 1; //times the bubble to appear
+var start = 0; //start number of loop 
+var number_of_creation = 0;
+Bubble.create = function(number_of_bubbles){
+    
+    Bubble.bubbleList = [];
+
+    for(let i = 0; i < number_of_bubbles; i++){
+        let b = new Object();
+        b.loc = vec3(2*Math.cos(i*0.8) +13 , 2*Math.cos(i) + 7, -7);
+        Bubble.bubbleList.push(b);
+        
+    }
+}
+
+Bubble.create(random_bubble); //randomize it
+
+Bubble.update = function(){
+    for(let i = start; i < inhibitor; i++){
+        this.bubbleList[i].loc[1] += 0.04;
+    }
+}
+
+Bubble.draw = function() {
+    for(let i = start; i < inhibitor; i++){
+        gPush();
+        {
+           setColor(vec4(1,1,1,1.0));
+           gScale(0.275,0.275,0.275);
+           gTranslate(this.bubbleList[i].loc[0], this.bubbleList[i].loc[1], this.bubbleList[i].loc[2]);
+           gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
+           drawSphere();
+        }
+        gPop();
+    }
+}
+// ** functions needed to create bubble ends here **
+
 
 function render() {
     
@@ -472,35 +522,33 @@ function render() {
         }gPop();
     }
     gPop();
-
-    gPush();
-    {
-        setColor(white);
-        for(let i = 0; i <= currBubble; i++){
-            if(lastPos.length == i){
-                lastPos.push(pos);
-            }
-            createBubble(i);
-        }
-        currBubble++;
+   
+    if(TIME > bubble_shoot_timer && inhibitor < random_bubble){
+        inhibitor = inhibitor + 1;
+        bubble_shoot_timer += 0.8;
     }
-    gPop();
-    
+
+    Bubble.update();
+    Bubble.draw();
+   
+
+        
     if( animFlag )
         window.requestAnimFrame(render);
 }
 
-function createBubble(num){ //draws shape of bubble
-    gPush();{
-        if(TIME <= 12){
-            gRotate(330,0,1,0);
-            gScale(0.275,0.275,0.275);
-            gTranslate(lastPos[num], lastPos[num]+TIME, -13);
-            gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
-            drawSphere();
-        }
-    }gPop();
-}
+// function createBubble(num){ //draws shape of bubble
+//     gPush();{
+//         if(TIME <= 12){
+//             gRotate(330,0,1,0);
+//             gScale(0.275,0.275,0.275);
+//             gTranslate(lastPos[num], lastPos[num]+TIME, -13);
+//             gScale(0.1*Math.cos(TIME)+0.5, 0.1*Math.cos(TIME+9)+0.5, 0.5);
+//             drawSphere();
+//         }
+//     }gPop();
+// }
+
 
 //draws ellipse shapes
 function draw_ellipse(){
