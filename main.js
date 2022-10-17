@@ -48,7 +48,6 @@ var controller;
 
 var bubbleBurst = Math.floor(Math.random()*2+5);
 var lastPos = [];
-var used = [];
 var currBubble = 0;
 
 function setColor(c)
