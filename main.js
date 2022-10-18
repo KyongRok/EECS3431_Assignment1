@@ -370,6 +370,7 @@ function render() {
             gScale(0.25, 0.25, 0.25);
             drawSphere();
         }gPop();
+        //rotate the tail back and forth around body cone point
         gTranslate(4.25, 0, 0);
         gRotate(50*Math.cos(10*TIME), 0, 1, 0);
         gTranslate(-4.25, 0, 0);
@@ -394,9 +395,12 @@ function render() {
     {//human aka Character
         gRotate(330,0,1,0); //rotate whole body
         //gRotate(90, 0, 1, 0); //for testing
-        gScale(0.275,0.275,0.275); //scale
-        var pos = 2*Math.cos(TIME/2)+8;
-        gTranslate(pos, pos, -15); //change to pos
+        gScale(0.275,0.275,0.275); //scale whole body
+        var pos = 2*Math.cos(TIME/2); //save head location for bubbles later on
+        //translate body in x and y world direction
+        gRotate(330,0,-1,0);
+        gTranslate(pos + 14, pos + 10, -15);
+        gRotate(330,0,1,0);
         setColor(purple);
         gPush(); {//head
             drawSphere();
@@ -409,6 +413,7 @@ function render() {
         }
         gPop();
         gPush();{
+            //transformation on the whole left leg
             gTranslate(0, -5, 0);
             gRotate(8*Math.cos(TIME), -1, 0,0);
             gTranslate(0, 5, 0);
@@ -420,6 +425,7 @@ function render() {
                 drawCube();
             }
             gPop();
+            //transformation on the rest of the left leg
             gTranslate(0, -10.5, -2.25);
             gRotate(8*Math.cos(TIME), -1, 0,0);
             gTranslate(0, 10.5, 2.25);
@@ -441,6 +447,7 @@ function render() {
             gPop();
         }gPop();
         gPush();{
+            //transformations on the whole right leg
             gTranslate(0, -5, 0);
             gRotate(8*Math.cos(TIME+9), -1, 0,0);
             gTranslate(0, 5, 0);
@@ -452,6 +459,7 @@ function render() {
                 drawCube();
             }
             gPop();
+            //transformations on rest of the right leg
             gTranslate(0, -10.5, -2.25);
             gRotate(8*Math.cos(TIME+9), -1, 0,0);
             gTranslate(0, 10.5, 2.25);
@@ -506,17 +514,23 @@ function render() {
 
 function createBubble(num){ //draws shape of bubble
     gPush();{
-        if(TIME-lastTime[num] <= 12){
+        if(TIME-lastTime[num] <= 12){ //lasts for around 12 seconds
             gRotate(330,0,1,0); //rotation done here to mimic same rotation to the person
             gScale(0.275,0.275,0.275); //scale done here to mimic same scale to the person
-            gTranslate(lastPos[num], lastPos[num] + (TIME-lastTime[num]), -13.5);
+
+            //rotation and translate done here to mimic transformations of the person, with additional
+            //y movement
+            gRotate(330,0,-1,0);
+            gTranslate(lastPos[num] + 14, lastPos[num] + (TIME-lastTime[num]) + 10, -13.5);
+            gRotate(330,0,1,0);
+
             gScale(0.1*Math.cos(TIME-lastTime[num])+0.5, 0.1*Math.cos((TIME-lastTime[num]) + 9)+0.5, 0.5);
             drawSphere();
         }
     }gPop();
 }
 
-//draws ellipse shapes
+//draws ellipse shapes for seaweed
 function draw_ellipse(){
     gPush();
     {
@@ -527,16 +541,19 @@ function draw_ellipse(){
 }
 
 function addStrands(){
-    let sumAngle = 0;
+    let sumAngle = 0; //keeps track of all the angle changes
     //ellipses have side to side movement and rotational movements
     for(let i = 1; i <= 8; i++){
+        //translate upward and rotate around last ellipse
         let currAngle = 15*Math.cos(TIME+i);
         gTranslate(0,0.3,0);
         gRotate(currAngle, 0, 0, 1);
         gTranslate(0,0.3,0);
+        //draw ellipse and update angle changes
         draw_ellipse();
         sumAngle += currAngle;
     }
+    //revert angle changes and draw last ellipse
     gTranslate(0,0.3,0)
     gRotate(-sumAngle, 0, 0, 1);
     gTranslate(0,0.3,0)
