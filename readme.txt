@@ -21,11 +21,11 @@ Required Elements Added:
 14. Human modelled without arms
 15. Human moves in x and y  world directions
 16. Human legs kick (rotation on hips and knees) while feet do not move
-17. Submitted scene and sample scene are qualitatively and visually similat
+17. Submitted scene and sample scene are qualitatively and visually similar
 18. Program is fully commented and utilizes functions
 19. Scene is 512 x 512
-20. File named KyongRok-Kim.zip will be submitted
-11. The readme.txt file will be submitted
+20. File named KyongRok_Kim_Arian_Quader.zip will be submitted
+21. The readme.txt file will be submitted
 
 Required Elements Not Added:
 All elements were implemented successfully.
